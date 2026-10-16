@@ -1,0 +1,19 @@
+{
+  "name": "json-schema-usage-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Executable JSON Schema Draft 2020-12 examples with Ajv",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "demo": "node src/demo.js",
+    "validate": "node src/cli.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "1",
+  "name": "Ada Chen",
+  "email": "not-an-email",
+  "age": 16,
+  "role": "admin",
+  "address": {
+    "city": "Taipei",
+    "postalCode": "100"
+  },
+  "unexpected": true
+}

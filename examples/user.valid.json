@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "name": "Ada Chen",
+  "email": "ada@example.com",
+  "age": 28,
+  "role": "member",
+  "address": {
+    "city": "Taipei",
+    "postalCode": "100"
+  }
+}

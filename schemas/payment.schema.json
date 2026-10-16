@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/payment.json",
+  "title": "Payment method",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "last4"
+      ],
+      "properties": {
+        "kind": {
+          "const": "card"
+        },
+        "last4": {
+          "type": "string",
+          "pattern": "^[0-9]{4}$"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "bankCode"
+      ],
+      "properties": {
+        "kind": {
+          "const": "transfer"
+        },
+        "bankCode": {
+          "type": "string",
+          "pattern": "^[0-9]{3}$"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/user.json",
+  "title": "User registration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "email",
+    "age",
+    "role",
+    "address"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "\\S"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "age": {
+      "type": "integer",
+      "minimum": 18,
+      "maximum": 120
+    },
+    "role": {
+      "enum": [
+        "member",
+        "admin"
+      ]
+    },
+    "address": {
+      "$ref": "#/$defs/address"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "maxItems": 5,
+      "default": []
+    },
+    "nickname": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "read",
+          "write",
+          "manage"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  },
+  "$defs": {
+    "address": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "city",
+        "postalCode"
+      ],
+      "properties": {
+        "city": {
+          "type": "string",
+          "minLength": 1
+        },
+        "postalCode": {
+          "type": "string",
+          "pattern": "^[0-9]{3,6}$"
+        }
+      }
+    }
+  },
+  "if": {
+    "properties": {
+      "role": {
+        "const": "admin"
+      }
+    },
+    "required": [
+      "role"
+    ]
+  },
+  "then": {
+    "required": [
+      "permissions"
+    ],
+    "properties": {
+      "permissions": true
+    }
+  }
+}
